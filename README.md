@@ -3,7 +3,7 @@
 
 ## Usage
 - Create two subdirectories `./data/` and  `./figures/`.
-- Create a 24hr time table of your day using the format 'hour, agenda, mood'.  That is, each line of this file represents one hour of the chronodex.    The dictionary for the agenda is:
+- Construct a 24hr time table of your day using the format `hour, agenda, mood`.  That is, each line of this file represents one hour of the chronodex, delimited by comma.    The dictionary for the agenda is:
     1 chore
     2 food
     3 fun
@@ -22,7 +22,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update the example as appropriate.
 
 ## Credits
-Inspired by Cription's [chronodex](https://scription.typepad.com/) and Jón's [implementation in ruby](https://github.com/jontg/Chronodex).
+Inspired by Scription's [chronodex](https://scription.typepad.com/) and Jón's [implementation in ruby](https://github.com/jontg/Chronodex).
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
