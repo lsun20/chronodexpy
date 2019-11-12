@@ -10,13 +10,17 @@ date = str(sys.argv[1])
 tick = []
 radii = []
 radii_mood = []
+notes = []
+
 with open(str('./data/'+date+'.txt'), "r") as filestream:
     for line in filestream:
-        currentline = line.split(",")
+        currentline = line.rstrip('\n')
+        currentline = currentline.split(',')
         tick.append(int(currentline[0]))
         radii.append(int(currentline[1]))
         radii_mood.append(int(currentline[2]))
 
+        notes.append(currentline[3].strip())
 
 
 
@@ -81,7 +85,15 @@ plt.figure(figsize = (12, 8))
 ax = plt.subplot(111, polar=True)
 # radii_mood, tick = np.histogram(mood, bins = 23)
 bars = ax.bar(theta, radii_mood, width=width, bottom=bottom, color=colors)
-
+for i in range(len(theta)):
+    if notes[i]:
+        if (radii_mood[i] == radii_mood[i-1] and i>0):
+            ax.annotate(notes[i],xy=(theta[i]+width/2,radii_mood[i]+2))
+        elif (radii_mood[i] - radii_mood[i-1] <= 2 and i>0 and radii_mood[i] > radii_mood[i-1]):
+            ax.annotate(notes[i],xy=(theta[i]+width/2,radii_mood[i]+1))
+        else:
+            ax.annotate(notes[i],xy=(theta[i]+width/2,radii_mood[i]-0.1))
+        
 # set the lable go clockwise and start from the top
 ax.set_theta_zero_location("N")
 # clockwise

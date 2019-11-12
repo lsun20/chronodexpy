@@ -1,9 +1,10 @@
 # chronodexpy
- generate a chronodex of your day (and mood) in python
+ generate an annotated chronodex of your day (and mood) in Python
 
 ## Usage
+- Install `NumPy` and `Matplotlib`.
 - Create two subdirectories `./data/` and  `./figures/`.
-- Construct a 24hr time table of your day using the format `hour, agenda, mood`.  That is, each line of this file represents one hour of the chronodex, delimited by comma.    The dictionary for the agenda is:
+- Construct a 24hr time table of your day using the format `hour, agenda, mood, notes`.  That is, each line of this file represents one hour of the chronodex, delimited by comma, with notes overlay.    The dictionary for the agenda is:
     1 chore
     2 food
     3 fun
@@ -15,7 +16,7 @@
 - Save the time table to `./data/filename.txt`.
 - Execute  `python3 chronodex.py filename` and the chronodex  is saved in `./figures/filename.png`.
 
-An example time table can be found in `./data/20191108.txt` with its corresponding chronodex in `./figures/20191108.png`
+An example time table can be found in `./data/20191111.txt` with its corresponding chronodex in `./figures/20191111.png`
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
