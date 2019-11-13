@@ -1,0 +1,24 @@
+0, chore, 7, closet claustrophobe
+1, , ,  
+2, , , 
+3, sleep, 5, 
+4, , , 
+5, , , 
+6, , , 
+7, , , 
+8, , , 
+9, , ,  
+10, food, 8,  cumin + coriander
+11, chore, 2, what bus to take
+12, fun, 8, stimuli
+13, work, 4, 
+14, , , 
+15, , 6, too calm
+16, seminar, 8, full circle back
+17, seminar, 7, rearview mirror
+18, fun, 10, 
+19, , , Yoshitomo Nara
+20, , , distant memory
+21, , , 
+22, chore, 9, 
+23, work, , ready read
