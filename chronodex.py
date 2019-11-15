@@ -1,8 +1,10 @@
+import sys
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
+import subprocess
 
-date = '20191113' 
+date = str(sys.argv[1]) 
 tick = []
 radii = []
 radii_mood = []
@@ -23,15 +25,45 @@ with open(str('./data/'+date+'.txt'), "r") as filestream:
         else: 
             radii_mood.append(radii_mood[-1])
         notes.append(currentline[3].strip())
-# prepare palette that shows up in legend based on unique agenda items
-palette = [[0.8, 0.8, 0.2, 0.6],
-          [0.5, 0.2, 0.2, 0.6],
-          [1, 0.1, 0.5, 0.6],
-          [0.5, 0.1, 0.5, 0.6],
-          [0.2, 0.4, 0.6, 0.6],
-          [1, 0.5, 0.2, 0.6],
-          [0.2, 0.8, 0.2, 0.6], 
-          [0.1, 0.8, 1, 0.6]]
+# prepare palette that shows up in legend based on unique agenda items #nippon color; morandi#curl 'http://colormind.io/list/'
+transparency = 0.9
+MyOut = subprocess.Popen(['curl', 'http://colormind.io/api/', '--data-binary', '{"model":"default"}'], 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT)
+stdout,stderr = MyOut.communicate()
+
+print(stdout)
+temp = (stdout.decode('ASCII')).split('result":',1)[1] 
+temp = temp.rstrip('}\n')
+text = temp.split('],[')
+try1 = [list(map(int,((text[i].strip("[]")).split(',')))) for i in range(len(text))]
+MyOut = subprocess.Popen(['curl', 'http://colormind.io/api/', '--data-binary', '{"model":"ui"}'], 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT)
+stdout,stderr = MyOut.communicate()
+
+print(stdout)
+temp = (stdout.decode('ASCII')).split('result":',1)[1] 
+temp = temp.rstrip('}\n')
+text = temp.split('],[')
+try2 = [list(map(int,((text[i].strip("[]")).split(',')))) for i in range(len(text))]
+palette_rgb = try1 + try2
+transparency = 1
+palette = []
+for color in palette_rgb:
+    rgb = [c/255 for c in color]
+    rgb.append( transparency)
+    palette = palette + [rgb]
+
+
+# palette = [[0.8784,0.2353,0.5412, transparency],
+#             [0.9686,0.3608,0.1843, transparency],
+#           [0.3922,0.2118,0.2353, transparency],
+#           [0.9843,0.8863,0.3176, transparency],
+#           [0.5686,0.6784,0.4392, transparency],
+#           [0.0667,0.1961,0.5216, transparency],
+#           [0,0.5373,0.6549, transparency],
+#           [0.6941,0.5882,0.5765, transparency]]
 
 legend_elements = []
 agenda = list(set(radii))
