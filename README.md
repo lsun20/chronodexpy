@@ -8,6 +8,8 @@
 - Make sure the first hour is filled. But to repeat the previous hour's agenda (or mood), just leave the entry blank.
 - Save the time table to `./data/filename.txt`.
 - Execute  `python3 chronodex.py filename` and the chronodex  is saved in `./figures/filename.png`.
+- Execute  `python3 sleep_tracker.py filename` and the sleep trend  is saved in `./figures/sleep_tracker.png`.
+
 
 An example time table can be found in `./data/20191113.txt` with its corresponding chronodex in `./figures/20191113.png`
 ## Contributing
